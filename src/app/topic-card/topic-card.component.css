@@ -1,0 +1,17 @@
+app-topic-card {
+  padding: 8px;
+}
+
+.card {
+  margin: 8px;
+  border: hidden;
+}
+
+.card:hover {
+  box-shadow: 1px 8px 18px #bec0b8;
+  -webkit-transition: box-shadow .5s ease-in;
+}
+
+.card h5 {
+  color: #2066C9;
+}

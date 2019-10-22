@@ -14,24 +14,34 @@ import { LoginComponent } from './login/login.component';
 import { from } from 'rxjs';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+import bootstrap from "bootstrap";
+import { TopicCardComponent } from './topic-card/topic-card.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AdminComponent,
-    HomeComponent,
-    RegisterComponent,
-    UserComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule
-  ],
-  providers: [httpInterceptorProviders],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        AdminComponent,
+        HomeComponent,
+        RegisterComponent,
+        UserComponent,
+        LoginComponent,
+        NavbarComponent,
+        FooterComponent,
+        TopicCardComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AngularFontAwesomeModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule
+    ],
+    providers: [httpInterceptorProviders],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
