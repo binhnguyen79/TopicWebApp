@@ -1,1 +1,53 @@
-<p>register works!</p>
+<form class="border border-light p-5" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+  <p class="h4 mb-4 text-center">Sign up</p>
+
+  <label>Full Name:</label>
+  <input type="text" name="name" class="form-control" placeholder="Full name" [(ngModel)]="form.name" #name="ngModel" required>
+  <div *ngIf="f.submitted && name.invalid">
+    <div *ngIf="name.errors.required">Name is required</div>
+  </div>
+
+  <label>User Name:</label>
+  <input type="text" name="username" class="form-control" placeholder="User name" [(ngModel)]="form.username" #username="ngModel" required>
+  <div *ngIf="f.submitted && username.invalid">
+    <div *ngIf="username.errors.required">Username is required</div>
+  </div>
+
+  <label>Email:</label>
+  <input type="email" name="email" id="defaultRegisterFormEmail" class="form-control" placeholder="E-mail" [(ngModel)]="form.email" #email="ngModel" required email>
+  <div *ngIf="f.submitted && email.invalid">
+    <div *ngIf="email.errors.required">Email is required</div>
+    <div *ngIf="email.errors.email">Email must be a valid email address</div>
+  </div>
+
+  <label>Password:</label>
+  <input type="password" name="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" [(ngModel)]="form.password" #password="ngModel"
+         required minlength="6">
+  <div *ngIf="f.submitted && password.invalid">
+    <div *ngIf="password.errors.required">Password is required</div>
+    <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+  </div>
+
+  <button class="btn btn-info my-4 btn-block" type="submit">Sign up</button>
+
+  <div class="text-center">
+    <p>or sign up with:</p>
+
+    <a type="button" class="light-blue-text mx-2">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <i class="fa fa-google"></i>
+    </a>
+
+    <hr>
+
+    <p>
+      By clicking
+      <em>Sign up</em> you agree to our
+      <a href="" target="_blank">terms of service</a> and
+      <a href="" target="_blank">terms of service</a>.
+    </p>
+  </div>
+</form>
