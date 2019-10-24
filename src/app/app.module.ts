@@ -20,6 +20,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import bootstrap from "bootstrap";
 import { TopicCardComponent } from './topic-card/topic-card.component';
+import { MyTopicComponent } from './my-topic/my-topic.component';
+import { EditAccountUserComponent } from './edit-account-user/edit-account-user.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,9 @@ import { TopicCardComponent } from './topic-card/topic-card.component';
         LoginComponent,
         NavbarComponent,
         FooterComponent,
-        TopicCardComponent
+        TopicCardComponent,
+        MyTopicComponent,
+        EditAccountUserComponent
     ],
     imports: [
         BrowserModule,
