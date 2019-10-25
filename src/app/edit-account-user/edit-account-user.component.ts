@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { UserService } from '../services/user.service';
 import { Account } from '../account';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-edit-account-user',
@@ -13,9 +14,10 @@ export class EditAccountUserComponent implements OnInit {
     info: any;
     user: Account;
 
-    constructor(private tokenStorage: TokenStorageService, private userService: UserService) { }
+    constructor(private http: HttpClient, private tokenStorage: TokenStorageService, private userService: UserService) { }
 
     ngOnInit() {
+
         this.info = {
             token: this.tokenStorage.getToken(),
             username: this.tokenStorage.getUsername(),
@@ -23,6 +25,8 @@ export class EditAccountUserComponent implements OnInit {
         }
 
         this.user = new Account();
+
+        console.log();
 
         this.userService.getUserInfo(this.tokenStorage.getUsername()).subscribe(
             data => {
@@ -32,14 +36,4 @@ export class EditAccountUserComponent implements OnInit {
         );
 
     }
-
 }
-//this.employee = new Employee();
-
-//this.id = this.route.snapshot.params['id'];
-
-//this.employeeService.getEmployee(this.id).subscribe(
-//    data => {
-//        console.log(data)
-//        this.employee = data;
-//    }, error => console.log(error));

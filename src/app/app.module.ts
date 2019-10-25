@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import bootstrap from "bootstrap";
 import { TopicCardComponent } from './topic-card/topic-card.component';
 import { MyTopicComponent } from './my-topic/my-topic.component';
 import { EditAccountUserComponent } from './edit-account-user/edit-account-user.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
     declarations: [

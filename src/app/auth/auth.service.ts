@@ -5,10 +5,6 @@ import { JwtResponse } from './jwt-response';
 import { SignUpInfo } from './signup-info';
 import { Observable } from 'rxjs';
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 @Injectable({
     providedIn: 'root'
 })
@@ -20,10 +16,10 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     attempAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
-        return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
+        return this.http.post<JwtResponse>(this.loginUrl, credentials);
     }
 
     signUp(info: SignUpInfo): Observable<string> {
-        return this.http.post<string>(this.signUpUrl, info, httpOptions);
+        return this.http.post<string>(this.signUpUrl, info);
     }
 }
