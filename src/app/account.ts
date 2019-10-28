@@ -3,5 +3,5 @@ export class Account {
     name: string;
     username: string;
     email: string;
-    password: boolean;
+    password: string;
 }

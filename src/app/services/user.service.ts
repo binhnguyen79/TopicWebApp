@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Account } from '../account';
 
 @Injectable({
     providedIn: 'root'
@@ -9,6 +10,7 @@ export class UserService {
 
     private userUrl = 'http://localhost:8080/api/user';
     //private adminUrl = 'http://localhost:8080/api/admin';
+    private updateUrl = 'http://localhost:8080/api/update-account';
 
     constructor(private http: HttpClient) { }
 
@@ -19,5 +21,10 @@ export class UserService {
     //getAdminBoard(): Observable<string> {
     //    return this.http.get(this.adminUrl, { responseType: 'text' });
     //}
+
+    updateInfo(accountId: number, account: Account): Observable<any> {
+        //return this.http.put(this.updateUrl, { params: [accountId, account] });
+        return this.http.put(this.updateUrl, { params: [accountId, account] } );
+    }
 
 }
