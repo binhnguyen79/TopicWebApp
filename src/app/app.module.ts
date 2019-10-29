@@ -23,6 +23,7 @@ import { TopicCardComponent } from './topic-card/topic-card.component';
 import { MyTopicComponent } from './my-topic/my-topic.component';
 import { EditAccountUserComponent } from './edit-account-user/edit-account-user.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { TopicViewComponent } from './topic-view/topic-view.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
         FooterComponent,
         TopicCardComponent,
         MyTopicComponent,
-        EditAccountUserComponent
+        EditAccountUserComponent,
+        TopicViewComponent
     ],
     imports: [
         BrowserModule,

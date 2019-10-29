@@ -3,6 +3,7 @@ import { AuthLoginInfo } from '../auth/login-info';
 import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { Router } from '@angular/router';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
     selector: 'app-login',
@@ -49,6 +50,11 @@ export class LoginComponent implements OnInit {
                 this.roles = this.tokenStorage.getAuthorities();
                 this.reloadPage();
                 this.router.navigateByUrl('/');
+            },
+            error => {
+                console.log(error);
+                this.errorMessage = error.error.message;
+                window.alert(this.errorMessage);
             }
         );
     }

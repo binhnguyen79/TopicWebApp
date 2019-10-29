@@ -8,7 +8,7 @@ import { Account } from '../account';
 })
 export class UserService {
 
-    private userUrl = 'http://localhost:8080/api/user';
+    private userUrl = 'http://localhost:8080/api/get-user-info';
     //private adminUrl = 'http://localhost:8080/api/admin';
     private updateUrl = 'http://localhost:8080/api/update-account';
 
@@ -22,9 +22,9 @@ export class UserService {
     //    return this.http.get(this.adminUrl, { responseType: 'text' });
     //}
 
-    updateInfo(accountId: number, account: Account): Observable<any> {
+    updateInfo(account: Account): Observable<any> {
         //return this.http.put(this.updateUrl, { params: [accountId, account] });
-        return this.http.put(this.updateUrl, { params: [accountId, account] } );
+        return this.http.put(this.updateUrl, account);
     }
 
 }

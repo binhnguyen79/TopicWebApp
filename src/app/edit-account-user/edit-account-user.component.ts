@@ -41,14 +41,11 @@ export class EditAccountUserComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.user);
-
-        this.userService.updateInfo(this.user.accountId, this.user).subscribe(
+        this.userService.updateInfo(this.user).subscribe(
             data => {
-                console.log(data);
                 this.user = data;
             }, error => console.log(error)
         );
-        //location.reload();
+        location.reload();
     }
 }

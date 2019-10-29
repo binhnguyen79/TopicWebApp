@@ -15,3 +15,13 @@ app-topic-card {
 .card h5 {
   color: #2066C9;
 }
+
+.card-body {
+  height: 200px;
+}
+
+p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

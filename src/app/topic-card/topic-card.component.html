@@ -1,8 +1,8 @@
-<div class="card">
+<div class="card" *ngFor="let topic of topicData">
   <div class="card-body">
-    <h5 class="card-title">Panel title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Panel subtitle</h6>
-    <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p>
-    <button (click)="check()" class="btn btn-outline-success my-2 my-sm-0">Read More</button>
+    <h5 class="card-title">{{topic.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{topic.creationDay}}</h6>
+    <p class="card-text" style="text-overflow: ellipsis">{{topic.content}}</p>
+    <button  class="btn btn-outline-success my-2 my-sm-0">Read More</button>
   </div>
 </div>
