@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +27,8 @@ import { MyTopicComponent } from './my-topic/my-topic.component';
 import { EditAccountUserComponent } from './edit-account-user/edit-account-user.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { TopicViewComponent } from './topic-view/topic-view.component';
+import { TopicContentComponent } from './topic-view/topic-content/topic-content.component';
+import { TopicCommentComponent } from './topic-view/topic-comment/topic-comment.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +43,9 @@ import { TopicViewComponent } from './topic-view/topic-view.component';
         TopicCardComponent,
         MyTopicComponent,
         EditAccountUserComponent,
-        TopicViewComponent
+        TopicViewComponent,
+        TopicContentComponent,
+        TopicCommentComponent
     ],
     imports: [
         BrowserModule,
@@ -46,7 +53,10 @@ import { TopicViewComponent } from './topic-view/topic-view.component';
         AngularFontAwesomeModule,
         FormsModule,
         HttpClientModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        NgbPaginationModule,
+        NgbAlertModule,
+        NgbModule
     ],
     providers: [httpInterceptorProviders],
     bootstrap: [AppComponent]
