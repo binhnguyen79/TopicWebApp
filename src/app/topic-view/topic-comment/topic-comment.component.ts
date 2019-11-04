@@ -7,7 +7,6 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./topic-comment.component.css']
 })
 export class TopicCommentComponent implements OnInit {
-    @Input() topic;
 
     constructor(public activeModel: NgbActiveModal) { }
 

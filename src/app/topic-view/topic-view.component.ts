@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Topic } from '../topic';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-topic-view',
@@ -8,10 +9,16 @@ import { Topic } from '../topic';
 })
 export class TopicViewComponent implements OnInit {
 
-    constructor() { }
+    @Output() passEntry: EventEmitter<any> = new EventEmitter();
+    @Input() topic;
+
+    constructor(public activeModal: NgbActiveModal) { }
     
     ngOnInit() {
-
+        console.log(this.topic);
     }
 
+    passBack() {
+        this.activeModal.close(this.topic);
+    }
 }

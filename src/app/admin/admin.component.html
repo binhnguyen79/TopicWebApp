@@ -1,1 +1,26 @@
-<p>admin works!</p>
+<ngb-tabset [justify]="currentJustify">
+    <ngb-tab>
+        <ng-template ngbTabTitle>
+            <a [routerLink]="['/admin-page/manage-account']" routerLinkActive="router-link-active">Account</a> 
+        </ng-template>
+        <ng-template ngbTabContent>
+            <router-outlet></router-outlet>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+        <ng-template ngbTabTitle>
+            <a [routerLink]="['/admin-page/manage-topic']" routerLinkActive="router-link-active">Topic</a> 
+        </ng-template>
+        <ng-template ngbTabContent>
+            <router-outlet></router-outlet>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+        <ng-template ngbTabTitle>
+            <a [routerLink]="['/admin-page/manage-comment']" routerLinkActive="router-link-active">Comment</a> 
+        </ng-template>
+        <ng-template ngbTabContent>
+            <router-outlet></router-outlet>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset>

@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,10 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { TopicViewComponent } from './topic-view/topic-view.component';
 import { TopicContentComponent } from './topic-view/topic-content/topic-content.component';
 import { TopicCommentComponent } from './topic-view/topic-comment/topic-comment.component';
+import { ManageAccountComponent } from './admin/manage-account/manage-account.component';
+import { ManageTopicComponent } from './admin/manage-topic/manage-topic.component';
+import { ManageCommentComponent } from './admin/manage-comment/manage-comment.component';
+import { RouterModule, Router } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -45,7 +49,10 @@ import { TopicCommentComponent } from './topic-view/topic-comment/topic-comment.
         EditAccountUserComponent,
         TopicViewComponent,
         TopicContentComponent,
-        TopicCommentComponent
+        TopicCommentComponent,
+        ManageAccountComponent,
+        ManageTopicComponent,
+        ManageCommentComponent
     ],
     imports: [
         BrowserModule,
@@ -56,9 +63,10 @@ import { TopicCommentComponent } from './topic-view/topic-comment/topic-comment.
         BrowserAnimationsModule,
         NgbPaginationModule,
         NgbAlertModule,
-        NgbModule
+        NgbModule,
     ],
     providers: [httpInterceptorProviders],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [TopicViewComponent]
 })
 export class AppModule { }

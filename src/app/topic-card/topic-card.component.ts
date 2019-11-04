@@ -4,6 +4,7 @@ import { Topic } from '../topic';
 import { HttpClient } from '@angular/common/http';
 import { TopicService } from '../services/topic.service';
 import { TopicViewComponent } from '../topic-view/topic-view.component';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-topic-card',
@@ -14,11 +15,9 @@ export class TopicCardComponent implements OnInit, OnChanges {
     info: any;
     topicData: Topic[];
 
-    @Input() content: Topic;
-    @Output() needSend = new EventEmitter<boolean>();
     @Input('listSearch') listSearch: Array<Topic>;
 
-    constructor(private tokenStorage: TokenStorageService, private http: HttpClient, private topicService: TopicService) { }
+    constructor(private modalService: NgbModal, private tokenStorage: TokenStorageService, private http: HttpClient, private topicService: TopicService) { }
 
     ngOnInit() {
         
@@ -42,8 +41,8 @@ export class TopicCardComponent implements OnInit, OnChanges {
         location.reload();
     }
 
-    clickToToggle(boo: boolean) {
-        this.needSend.emit(boo);
+    openModal(topic: Topic) {
+        const modalRef = this.modalService.open(TopicViewComponent);
+        modalRef.componentInstance.topic = topic;
     }
-
 }
