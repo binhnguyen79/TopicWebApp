@@ -1,0 +1,18 @@
+td button, .icon-edit, .icon-flag-alt {
+    background-color: #28a745;
+    border-color: #28a745;
+    box-shadow: #28a745;
+    background-image: #28a745;
+
+}
+
+td .btn-danger, .icon-trash {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    box-shadow: #dc3545;
+    background-image: #dc3545;
+}
+
+.icon-edit, .icon-flag-alt, .icon-trash {
+    size: inherit;
+}

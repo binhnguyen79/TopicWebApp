@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Account } from 'src/app/account';
 import { AdminService } from 'src/app/services/admin.service';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-manage-account',
@@ -10,31 +11,45 @@ import { TokenStorageService } from 'src/app/auth/token-storage.service';
 })
 export class ManageAccountComponent implements OnInit {
 
-  accountList: any;
+  accountlist: any;
 
   constructor(private adminService: AdminService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
-    this.adminService.getAccountByAdmin(this.tokenStorage.getUsername()).subscribe(
-      data => {
-        console.log(data);
-        this.accountList = data;
-      }, error => {
-        
-      }
-    )
+    this.reloadData();
   }
 
-  updateAccount(aacountId: number) {
-    return ;
+  reloadData() {
+    this.accountlist = this.adminService.getAccountByAdmin();
   }
 
-  activateAccount(accountId: number) {
-    return ;
+  updateAccount(account: Account) {
+    // const acc = new Account();
+    // acc.username = account.username;
+    // acc.accountId = account.accountId;
+    // acc.active = account.active;
+    // acc.email = account.email;
+    // acc.name = account.name;
+    // acc.roles = account.roles;
+
+    // return this.adminService.updateAccount(acc);
   }
 
-  deleteAccount(accountId: number) {
-    return ;
+  activateAccount(account: Account) {
+
+    const acc = new Account();
+    acc.username = account.username;
+    acc.accountId = account.accountId;
+    acc.active = !account.active;
+    acc.email = account.email;
+    acc.name = account.name;
+    acc.roles = account.roles;
+
+    return this.adminService.activateAccount(acc);
+  }
+
+  deleteAccount(username: string) {
+    return this.adminService.deleteAccount(username);
   }
 
 }

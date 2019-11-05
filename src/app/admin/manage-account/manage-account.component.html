@@ -1,28 +1,34 @@
 <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Full Name</th>
-        <th scope="col">Username</th>
-        <th scope="col">Email</th>
-        <th scope="col">Role</th>
-        <th scope="col">Activate</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let a of accountList">
-        <td>{{a.accountId}}</td>
-        <td>{{a.name}}</td>
-        <td>{{a.username}}</td>
-        <td>{{a.email}}</td>
-        <td>{{a.role}}</td>
-        <td>{{a.activate}}</td>
-        <td>
-            <button (click)="updateAccount(a.accountId)" class="btn btn-info" style="margin-left: 10px">Update</button>
-            <button (click)="activateAccount(a.accountId)" class="btn btn-info" style="margin-left: 10px">Activate</button>
-            <button (click)="deleteAccount(a.accountId)" class="btn btn-danger" style="margin-left:10px">Delete</button>
-        </td>
-      </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">Activate</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of accountlist | async">
+      <td>{{a.accountId}}</td>
+      <td>{{a.name}}</td>
+      <td>{{a.username}}</td>
+      <td>{{a.email}}</td>
+      <td><p *ngFor="let ar of a.roles">{{ar.role}}</p></td>
+      <td>{{a.active}}</td>
+      <td>
+        <button (click)="updateAccount(a)" class="btn btn-info" style="margin-left: 10px">
+          <i class="far fa-edit"></i>
+        </button>
+        <button (click)="activateAccount(a)" class="btn btn-info" style="margin-left: 10px">
+          <i class="fab fa-font-awesome-flag"></i>
+        </button>
+        <button (click)="deleteAccount(a.username)" class="btn btn-danger" style="margin-left:10px">
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>
