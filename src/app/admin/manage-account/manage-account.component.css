@@ -16,3 +16,8 @@ td .btn-danger, .icon-trash {
 .icon-edit, .icon-flag-alt, .icon-trash {
     size: inherit;
 }
+
+.table .thead-dark th  {
+    background: #28a745;
+    border-color: #28a745;
+}

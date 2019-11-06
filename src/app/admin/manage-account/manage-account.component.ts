@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class ManageAccountComponent implements OnInit {
 
   accountlist: any;
+  username: string;
 
   constructor(private adminService: AdminService, private tokenStorage: TokenStorageService) { }
 
@@ -23,33 +24,14 @@ export class ManageAccountComponent implements OnInit {
     this.accountlist = this.adminService.getAccountByAdmin();
   }
 
-  updateAccount(account: Account) {
-    // const acc = new Account();
-    // acc.username = account.username;
-    // acc.accountId = account.accountId;
-    // acc.active = account.active;
-    // acc.email = account.email;
-    // acc.name = account.name;
-    // acc.roles = account.roles;
+  clickChangeRole(a: Account) {
 
-    // return this.adminService.updateAccount(acc);
+    return this.adminService.changeRole(a);
   }
 
-  activateAccount(account: Account) {
+  clickActivateAccount(a: Account) {
 
-    const acc = new Account();
-    acc.username = account.username;
-    acc.accountId = account.accountId;
-    acc.active = !account.active;
-    acc.email = account.email;
-    acc.name = account.name;
-    acc.roles = account.roles;
-
-    return this.adminService.activateAccount(acc);
-  }
-
-  deleteAccount(username: string) {
-    return this.adminService.deleteAccount(username);
+    return this.adminService.activateAccount(a);
   }
 
 }

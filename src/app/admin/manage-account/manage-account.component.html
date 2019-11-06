@@ -1,5 +1,5 @@
 <table class="table table-hover">
-  <thead>
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Full Name</th>
@@ -19,14 +19,11 @@
       <td><p *ngFor="let ar of a.roles">{{ar.role}}</p></td>
       <td>{{a.active}}</td>
       <td>
-        <button (click)="updateAccount(a)" class="btn btn-info" style="margin-left: 10px">
-          <i class="far fa-edit"></i>
+        <button type="button" (click)="clickChangeRole(a)" class="btn btn-info">
+          <i style="position: relative;" class="fab fa-font-awesome-flag"></i>
         </button>
-        <button (click)="activateAccount(a)" class="btn btn-info" style="margin-left: 10px">
-          <i class="fab fa-font-awesome-flag"></i>
-        </button>
-        <button (click)="deleteAccount(a.username)" class="btn btn-danger" style="margin-left:10px">
-          <i class="fas fa-trash"></i>
+        <button type="button" (click)="clickActivateAccount(a)" class="btn btn-danger" style="margin-left:10px">
+          <i style="position: relative;" class="fas fa-power-off"></i>
         </button>
       </td>
     </tr>
