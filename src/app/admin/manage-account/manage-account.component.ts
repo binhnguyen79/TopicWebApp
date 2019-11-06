@@ -25,13 +25,29 @@ export class ManageAccountComponent implements OnInit {
   }
 
   clickChangeRole(a: Account) {
+    console.log("Function called!!");
+    console.log(a);
+    this.adminService.changeRole(a).subscribe(
+      data => {
 
-    return this.adminService.changeRole(a);
+      }, error => {
+        
+      }
+    );
+    // window.location.reload();
   }
 
   clickActivateAccount(a: Account) {
+    console.log("Function called!!")
+    console.log(a);
+    this.adminService.activateAccount(a).subscribe(
+      data => {
 
-    return this.adminService.activateAccount(a);
+      }, error => {
+
+      }
+    );
+    // window.location.reload();
   }
 
 }

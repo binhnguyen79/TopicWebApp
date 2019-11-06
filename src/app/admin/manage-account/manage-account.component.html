@@ -4,6 +4,7 @@
       <th scope="col">Id</th>
       <th scope="col">Full Name</th>
       <th scope="col">Username</th>
+      <th scope="col">Password</th>
       <th scope="col">Email</th>
       <th scope="col">Role</th>
       <th scope="col">Activate</th>
@@ -15,6 +16,7 @@
       <td>{{a.accountId}}</td>
       <td>{{a.name}}</td>
       <td>{{a.username}}</td>
+      <td>{{a.password}}</td>
       <td>{{a.email}}</td>
       <td><p *ngFor="let ar of a.roles">{{ar.role}}</p></td>
       <td>{{a.active}}</td>
