@@ -41,7 +41,6 @@ export class NavbarComponent implements OnInit {
         console.log(this.tokenStorage.getToken());
         console.log(this.tokenStorage.getAuthorities());
         console.log(this.tokenStorage.getUsername());
-        console.log("wtf bro")
         window.location.reload();
     }
 

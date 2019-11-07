@@ -25,7 +25,6 @@ export class ManageAccountComponent implements OnInit {
   }
 
   clickChangeRole(a: Account) {
-    console.log("Function called!!");
     console.log(a);
     this.adminService.changeRole(a).subscribe(
       data => {
@@ -34,11 +33,10 @@ export class ManageAccountComponent implements OnInit {
         
       }
     );
-    // window.location.reload();
+    window.location.reload();
   }
 
   clickActivateAccount(a: Account) {
-    console.log("Function called!!")
     console.log(a);
     this.adminService.activateAccount(a).subscribe(
       data => {
@@ -47,7 +45,7 @@ export class ManageAccountComponent implements OnInit {
 
       }
     );
-    // window.location.reload();
+    window.location.reload();
   }
 
 }

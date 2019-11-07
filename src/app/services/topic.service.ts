@@ -9,7 +9,7 @@ import { Topic } from '../topic';
 export class TopicService {
 
     private getTopicUrl = 'http://localhost:8080/api/get-topic';
-    private getTopicByKeyUrl = 'http://localhost:8080/api/get-topic-by-key'
+    private getTopicByKeyUrl = 'http://localhost:8080/api/search-topic-by-key'
 
     constructor(private http: HttpClient) { }
 

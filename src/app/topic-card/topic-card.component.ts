@@ -14,6 +14,8 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class TopicCardComponent implements OnInit, OnChanges {
     info: any;
     topicData: Topic[];
+    page: number = 0;
+    pageSize: number = 5;
 
     @Input('listSearch') listSearch: Array<Topic>;
 

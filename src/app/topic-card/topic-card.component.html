@@ -1,4 +1,4 @@
-<div class="card" id={{topic.idTopic}} *ngFor="let topic of topicData">
+<div class="card" id={{topic.idTopic}} *ngFor="let topic of topicData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
   <div class="card-body">
     <h5 class="card-title">{{topic.title}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{topic.creationDay}}</h6>
@@ -6,3 +6,8 @@
     <button  class="btn btn-outline-success my-2 my-sm-0" (click)="openModal(topic)" >Read More</button>
   </div>
 </div>
+
+<ngb-pagination
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="topicData?.length"></ngb-pagination>
