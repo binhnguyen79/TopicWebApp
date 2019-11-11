@@ -25,7 +25,7 @@ const routes: Routes = [
         { path: 'manage-comment', component: ManageCommentComponent }
       ] 
     },
-    { path: 'my-topic', component: MyTopicComponent }
+    { path: 'my-topics', component: MyTopicComponent }
 ];
 
 @NgModule({

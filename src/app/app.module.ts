@@ -19,6 +19,7 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import bootstrap from "bootstrap";
 import { TopicCardComponent } from './topic-card/topic-card.component';
@@ -62,6 +63,7 @@ import { RouterModule, Router } from '@angular/router';
         BrowserAnimationsModule,
         NgbPaginationModule,
         NgbAlertModule,
+        CKEditorModule,
         NgbModule,
     ],
     providers: [httpInterceptorProviders],

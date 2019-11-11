@@ -16,10 +16,11 @@ export class TopicCardComponent implements OnInit, OnChanges {
     topicData: Topic[];
     page: number = 0;
     pageSize: number = 5;
+    sort: string = 'creationDay';
 
     @Input('listSearch') listSearch: Array<Topic>;
 
-    constructor(private modalService: NgbModal, private tokenStorage: TokenStorageService, private http: HttpClient, private topicService: TopicService) { }
+    constructor(private modalService: NgbModal, private tokenStorage: TokenStorageService, private topicService: TopicService) { }
 
     ngOnInit() {
         
@@ -35,7 +36,11 @@ export class TopicCardComponent implements OnInit, OnChanges {
                 this.topicData = data;
             }, error => console.log(error)
         );
+        
+    }
 
+    onGetData(pageNumber: number, pageSize: number, sort: string) {
+        
     }
 
     ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
@@ -44,7 +49,7 @@ export class TopicCardComponent implements OnInit, OnChanges {
     }
 
     openModal(topic: Topic) {
-        const modalRef = this.modalService.open(TopicViewComponent);
+        const modalRef = this.modalService.open(TopicViewComponent, {size: "lg"});
         modalRef.componentInstance.topic = topic;
     }
 }
