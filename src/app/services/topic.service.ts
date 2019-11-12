@@ -8,8 +8,11 @@ import { Topic } from '../topic';
 })
 export class TopicService {
 
-    private getTopicUrl = 'http://localhost:8080/api/get-topic';
-    private getTopicByKeyUrl = 'http://localhost:8080/api/search-topic-by-key'
+    private baseUrl = 'http://localhost:8080/api';
+
+    private getTopicUrl = this.baseUrl + '/get-topic';
+    private getTopicByKeyUrl = this.baseUrl + '/search-topic-by-key';
+    private getTopicForUserUrl = this.baseUrl + '/my-topics';
 
     constructor(private http: HttpClient) { }
 
@@ -19,5 +22,9 @@ export class TopicService {
 
     getTopicByKeyWord(key: string): Observable<Array<Topic>> {
         return this.http.get<Array<Topic>>(this.getTopicByKeyUrl, { params: { key } });
+    }
+
+    getTopicForUser(username: string): Observable<Array<Topic>> {
+        return this.http.get<Array<Topic>>(this.getTopicForUserUrl, {params: { username }});
     }
 }

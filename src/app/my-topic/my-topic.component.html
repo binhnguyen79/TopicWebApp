@@ -1,8 +1,47 @@
-<div class="card" *ngFor="let topic of topicData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+<!-- <div class="card" *ngFor="let topic of topicData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
     <div class="card-body">
       <h5 class="card-title">{{topic.title}}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{topic.creationDay}}</h6>
       <p class="card-text" style="text-overflow: ellipsis">{{topic.content}}</p>
       <button  class="btn btn-outline-success my-2 my-sm-0" (click)="openModal(topic)" >Read More</button>
     </div>
+</div> -->
+
+<h3 style="margin-top: 5px;">Your Personal Topic</h3>
+
+<div>
+  <button type="button" class="btn btn-outline-success" style="margin-bottom: 5px;" (click)="isCollapsed = !isCollapsed"
+  [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+    New Topic
+  </button>
+
+  <div id="collapseExample" [ngbCollapse]="isCollapsed">
+    <div class="card" style="margin-bottom: 8px;">
+      <div class="card-body">
+        <label style="padding-right: 8px;"><b>Title</b></label>
+        <input class="form-control mr-sm-2 ng-untouched ng-pristine ng-valid" type="text"> 
+        <br>
+        <ckeditor [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic' ] }" [editor]="Editor" data="<p>Hello, world!</p>" (ready)="onReady($event)"></ckeditor>
+      </div>
+      <button class="saveTopic btn btn-outline-success ml-auto" id="newTopic"> Create </button>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card" style="margin-bottom: 5px;" 
+  *ngFor="let topic of topicData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+      <div class="card-body">
+        <h5 class="card-title">{{topic.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{topic.creationDay}}</h6>
+        <p class="card-text" style="text-overflow: ellipsis">{{topic.content}}</p>
+        <button  class="btn btn-outline-success my-2 my-sm-0" (click)="openModal(topic)" >Read More</button>
+      </div>
+  </div>
+
+  <ngb-pagination
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="topicData?.length">
+  </ngb-pagination>
 </div>
