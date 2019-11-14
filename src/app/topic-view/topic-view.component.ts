@@ -3,6 +3,8 @@ import { Topic } from '../topic';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { TopicService } from '../services/topic.service';
+import { error } from 'util';
+import { Comment } from '../comment';
 
 @Component({
     selector: 'app-topic-view',
@@ -14,6 +16,8 @@ export class TopicViewComponent implements OnInit {
     isTrueOwner: boolean = false;
     @Output() passEntry: EventEmitter<any> = new EventEmitter();
     @Input() topic;
+    comment: string;
+    commentData: Comment[];
 
     constructor(public activeModal: NgbActiveModal, private tokenStorage: TokenStorageService, private topicService: TopicService) { }
     
@@ -22,10 +26,25 @@ export class TopicViewComponent implements OnInit {
         this.onTrueOwner().subscribe(
             data => {
                 this.isTrueOwner = data;
+                this.commentData = this.topic.commentId;
             }, error => {
                 console.log(error);
             }
         );
+    }
+
+    onSubmitComment() {
+        console.log(this.comment);
+        this.topicService.submitComment(this.topic.idTopic, this.comment, this.tokenStorage.getUsername()).subscribe(
+            data => {
+                console.log(data);
+                this.topic = data;
+                this.commentData = this.topic.commentId;
+            }, error => {
+                console.log(error);
+            }
+        )
+        this.comment = "";
     }
 
     passBack() {

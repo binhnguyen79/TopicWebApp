@@ -1,4 +1,5 @@
 import { Account } from './account';
+import { Comment } from './comment';
 
 export class Topic {
     idTopic: number;
@@ -7,5 +8,5 @@ export class Topic {
     creationDay: Date;
     createdBy: string;
     state: number;
-    commentId: number[];
+    commentId: Comment[];
 }

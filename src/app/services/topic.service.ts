@@ -7,7 +7,6 @@ import { Topic } from '../topic';
     providedIn: 'root'
 })
 export class TopicService {
-    
 
     private baseUrl = 'http://localhost:8080/api';
 
@@ -16,6 +15,7 @@ export class TopicService {
     private getTopicForUserUrl = this.baseUrl + '/my-topics';
     private createTopicForUserUrl = this.baseUrl + '/create-topic';
     private getIsTrueOwnerUrl = this.baseUrl + '/is-true-owner';
+    private submitCommentForTopicUrl = this.baseUrl + '/submit-comment';
 
     constructor(private http: HttpClient) { }
 
@@ -38,5 +38,11 @@ export class TopicService {
     isTrueOwner(username: string, topicId: number): Observable<boolean> {
         const id = topicId + '';
         return this.http.get<boolean>(this.getIsTrueOwnerUrl, { params: { username, id } });
+    }    
+    
+    submitComment(idTopic: number, comment: string, username: string) {
+        const id = idTopic + '';
+        return this.http.post(this.submitCommentForTopicUrl, {}, { params: { id, comment, username } });
     }
+    
 }

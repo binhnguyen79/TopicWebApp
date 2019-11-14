@@ -21,6 +21,12 @@
 </div>
 <div class="modal-body">
   <p>{{topic.content}}</p>
+  <hr>
+  <div class="row" *ngFor="let c of commentData ">
+      <div class="comment-section" id="comment">
+        <p>{{c.content}}</p>
+      </div>
+  </div>
 </div>
 
 <div class="modal-footer">
@@ -28,7 +34,7 @@
     <div class="comment-box">
       <textarea [(ngModel)]="comment" class="comment-area col-10">
       </textarea>
-      <button type="button" class="btn-comment btn btn-outline-success my-2 my-sm-0 col-2">Send</button>
+      <button type="button" (click)="onSubmitComment()" class="btn-comment btn btn-outline-success my-2 my-sm-0 col-2">Send</button>
     </div>  
   </div>
 </div>
