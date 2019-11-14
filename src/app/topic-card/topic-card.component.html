@@ -2,7 +2,7 @@
   <div class="card-body">
     <h5 class="card-title">{{topic.title}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{topic.creationDay}}</h6>
-    <p class="card-text" style="text-overflow: ellipsis">{{topic.content}}</p>
+    <p class="card-text" style="overflow: hidden; text-overflow: ellipsis">{{topic.content}}</p>
     <button  class="btn btn-outline-success my-2 my-sm-0" (click)="openModal(topic)" >Read More</button>
   </div>
 </div>

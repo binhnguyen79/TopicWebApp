@@ -13,10 +13,16 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MyTopicComponent implements OnInit {
 
-  public isCollapsed = false;
+  public isCollapsed = true;
 
   public Editor = ClassicEditor;
 
+  public ck = {
+    editorData: '<p>Hello, world!</p>'
+  };
+
+  editorData: string;
+  title: string;
   page: number = 0;
   pageSize: number = 5;
   topicData: Topic[];
@@ -35,6 +41,40 @@ export class MyTopicComponent implements OnInit {
     );
 
   }
+
+  onSaveTopic() {
+    console.log('button clicked and event fire');
+    console.log(this.title);
+    console.log(this.ck.editorData);
+    this.createNewTopic(this.title, this.ck.editorData); 
+    window.location.reload();   
+  }
+
+  createNewTopic(title: string, content: string) {
+    const topic = new Topic();
+    topic.title = title;
+    topic.content = content;
+
+    console.log("topic.title = " + topic.title);
+    console.log("topic.title = " + topic.content);
+
+    this.topicService.createTopic(title, content, this.tokenStorage.getUsername()).subscribe(
+      data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  // ClassicEditor
+  //   .create( document.querySelector( '#editor' ) )
+  //   .then( editor => {
+  //       editor.getData(); // -> '<p>Foo!</p>'
+  //   } )
+  //   .catch( error => {
+  //       console.error( error );
+  //   } );
 
   public onReady( editor ) {
       editor.ui.getEditableElement().parentElement.insertBefore(

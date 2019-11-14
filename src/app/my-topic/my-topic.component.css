@@ -5,3 +5,9 @@
     align-items: flex-end; 
     width: fit-content;
 }
+
+p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

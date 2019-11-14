@@ -19,11 +19,11 @@
     <div class="card" style="margin-bottom: 8px;">
       <div class="card-body">
         <label style="padding-right: 8px;"><b>Title</b></label>
-        <input class="form-control mr-sm-2 ng-untouched ng-pristine ng-valid" type="text"> 
+        <input class="form-control mr-sm-2 ng-untouched ng-pristine ng-valid" [(ngModel)]="title" placeholder="New title" type="text"> 
         <br>
-        <ckeditor [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic' ] }" [editor]="Editor" data="<p>Hello, world!</p>" (ready)="onReady($event)"></ckeditor>
+        <ckeditor [(ngModel)]="ck.editorData" [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic' ] }" [editor]="Editor"></ckeditor>
       </div>
-      <button class="saveTopic btn btn-outline-success ml-auto" id="newTopic"> Create </button>
+      <button type="button" class="saveTopic btn btn-outline-success ml-auto" id="newTopic" (click)="onSaveTopic()"> Create </button>
     </div>
   </div>
 </div>
@@ -34,7 +34,7 @@
       <div class="card-body">
         <h5 class="card-title">{{topic.title}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{topic.creationDay}}</h6>
-        <p class="card-text" style="text-overflow: ellipsis">{{topic.content}}</p>
+        <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">{{topic.content}}</p>
         <button  class="btn btn-outline-success my-2 my-sm-0" (click)="openModal(topic)" >Read More</button>
       </div>
   </div>

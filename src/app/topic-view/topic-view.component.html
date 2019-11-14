@@ -10,15 +10,27 @@
 
 <div class="modal-header">
   <h4 class="modal-title">{{topic.title}}</h4>
+  <button *ngIf="isTrueOwner" type="button" class="btn btn-outline-success my-2 my-sm-0 editButton">
+    <i class="fas fa-pencil-alt float-right"></i>
+  </button>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="false">
       &times;
-      <i class="fas fa-pencil-alt float-right"></i>
     </span>
   </button>
 </div>
 <div class="modal-body">
   <p>{{topic.content}}</p>
+</div>
+
+<div class="modal-footer">
+  <div class="row">
+    <div class="comment-box">
+      <textarea [(ngModel)]="comment" class="comment-area col-10">
+      </textarea>
+      <button type="button" class="btn-comment btn btn-outline-success my-2 my-sm-0 col-2">Send</button>
+    </div>  
+  </div>
 </div>
 
 <!-- <div class="modal-footer">

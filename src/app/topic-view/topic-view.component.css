@@ -1,0 +1,21 @@
+.editButton {
+    float: right;
+}
+
+.btn-comment {
+    padding-left: 5px;
+    width: 16.66%;
+    height: max-content;
+}
+
+.comment-area {
+    width: 83.33%;;
+    height: 100%;
+    resize: initial;
+}
+
+.comment-box {
+    width: 766px;
+    height: 38px;
+    padding-right: 16px;
+}
