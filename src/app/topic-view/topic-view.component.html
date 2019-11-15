@@ -19,13 +19,17 @@
     </span>
   </button>
 </div>
+
 <div class="modal-body">
   <p>{{topic.content}}</p>
   <hr>
-  <div class="row" *ngFor="let c of commentData ">
-      <div class="comment-section" id="comment">
-        <p>{{c.content}}</p>
-      </div>
+  <div class="row" *ngFor="let c of commentData">
+    <div class="comment-section" id="comment">
+      <p>{{c.content}}</p>
+    </div>
+    <button *ngIf="isTrueOwnerComment" type="button" class="btn btn-outline-success my-2 my-sm-0 editButton">
+      <i class="fas fa-pencil-alt float-right"></i>
+    </button>
   </div>
 </div>
 

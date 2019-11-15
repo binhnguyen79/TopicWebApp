@@ -14,6 +14,7 @@ import { Comment } from '../comment';
 export class TopicViewComponent implements OnInit {
 
     isTrueOwner: boolean = false;
+    isTrueOwnerComment: boolean = false;
     @Output() passEntry: EventEmitter<any> = new EventEmitter();
     @Input() topic;
     comment: string;
@@ -32,7 +33,7 @@ export class TopicViewComponent implements OnInit {
             }
         );
     }
-
+    
     onSubmitComment() {
         console.log(this.comment);
         this.topicService.submitComment(this.topic.idTopic, this.comment, this.tokenStorage.getUsername()).subscribe(
@@ -54,4 +55,8 @@ export class TopicViewComponent implements OnInit {
     onTrueOwner() {
        return this.topicService.isTrueOwner(this.tokenStorage.getUsername(), this.topic.idTopic);
     }
+
+    onTrueOwnerComment() {
+        return this.topicService.isTrueOwnerComment(this.tokenStorage.getUsername(), this.topic.idTopic);
+     }
 }
