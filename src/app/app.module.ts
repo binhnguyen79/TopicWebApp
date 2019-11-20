@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
@@ -65,6 +65,7 @@ import { RouterModule, Router } from '@angular/router';
         NgbAlertModule,
         CKEditorModule,
         NgbModule,
+        ReactiveFormsModule
     ],
     providers: [httpInterceptorProviders],
     bootstrap: [AppComponent],

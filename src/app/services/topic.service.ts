@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Topic } from '../topic';
+import { Comment } from '../comment';
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +17,7 @@ export class TopicService {
     private createTopicForUserUrl = this.baseUrl + '/create-topic';
     private getIsTrueOwnerUrl = this.baseUrl + '/is-true-owner';
     private submitCommentForTopicUrl = this.baseUrl + '/submit-comment';
+    private getListIsTrueComment = this.baseUrl + '/get-list-is-true-comment';
 
     constructor(private http: HttpClient) { }
 
@@ -45,4 +47,8 @@ export class TopicService {
         return this.http.post(this.submitCommentForTopicUrl, {}, { params: { id, comment, username } });
     }
     
+    isTrueOwnerComment(username: string, idTopic: number) {
+        const id = idTopic + '';
+        return this.http.get<Array<Comment>>(this.getListIsTrueComment, { params: { username, id } });
+    }
 }

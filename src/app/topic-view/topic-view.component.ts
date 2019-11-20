@@ -5,6 +5,7 @@ import { TokenStorageService } from '../auth/token-storage.service';
 import { TopicService } from '../services/topic.service';
 import { error } from 'util';
 import { Comment } from '../comment';
+import { TrueComment } from '../true-comment';
 
 @Component({
     selector: 'app-topic-view',
@@ -19,6 +20,9 @@ export class TopicViewComponent implements OnInit {
     @Input() topic;
     comment: string;
     commentData: Comment[];
+    commentIsTrueData: any;
+    isClickOnEdit: boolean = false;
+    isHidden: boolean = false;
 
     constructor(public activeModal: NgbActiveModal, private tokenStorage: TokenStorageService, private topicService: TopicService) { }
     
@@ -28,6 +32,15 @@ export class TopicViewComponent implements OnInit {
             data => {
                 this.isTrueOwner = data;
                 this.commentData = this.topic.commentId;
+            }, error => {
+                console.log(error);
+            }
+        );
+
+        this.onTrueOwnerComment().subscribe(
+            data => {
+                console.log(data);
+                this.commentData = data;
             }, error => {
                 console.log(error);
             }
@@ -44,8 +57,16 @@ export class TopicViewComponent implements OnInit {
             }, error => {
                 console.log(error);
             }
-        )
+        );
         this.comment = "";
+        this.onTrueOwnerComment().subscribe(
+            data => {
+                console.log(data);
+                this.commentData = data;
+            }, error => {
+                console.log(error);
+            }
+        );
     }
 
     passBack() {
@@ -58,5 +79,10 @@ export class TopicViewComponent implements OnInit {
 
     onTrueOwnerComment() {
         return this.topicService.isTrueOwnerComment(this.tokenStorage.getUsername(), this.topic.idTopic);
-     }
+    }
+
+    onClickEditTopic() {
+        this.isHidden = !this.isHidden;
+        this.isClickOnEdit = !this.isClickOnEdit;
+    }
 }

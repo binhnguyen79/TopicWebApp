@@ -3,7 +3,7 @@
 }
 
 .btn-comment {
-    padding-left: 5px;
+    padding-left: 8px;
     width: 16.66%;
     height: max-content;
 }
@@ -11,15 +11,22 @@
 .comment-area {
     width: 83.33%;;
     height: 100%;
-    resize: initial;
+    resize: none;
 }
 
 .comment-box {
     width: 766px;
     height: 38px;
     padding-right: 16px;
+    padding-top: 8px;
+    padding-left: 8px;
+    padding-bottom: 8px;
 }
 
 p {
     padding-left: 16px;
+}
+
+[hidden] {
+    display: none !important;
 }
