@@ -18,6 +18,8 @@ export class TopicService {
     private getIsTrueOwnerUrl = this.baseUrl + '/is-true-owner';
     private submitCommentForTopicUrl = this.baseUrl + '/submit-comment';
     private getListIsTrueComment = this.baseUrl + '/get-list-is-true-comment';
+    private onSaveUpdateTopic = this.baseUrl + '/update-topic';
+    private unLockOrLockTopicUrl = this.baseUrl + '/unlock-or-lock-topic';
 
     constructor(private http: HttpClient) { }
 
@@ -50,5 +52,14 @@ export class TopicService {
     isTrueOwnerComment(username: string, idTopic: number) {
         const id = idTopic + '';
         return this.http.get<Array<Comment>>(this.getListIsTrueComment, { params: { username, id } });
+    }
+
+    onUpdateTopic(topic: Topic) {
+        return this.http.put(this.onSaveUpdateTopic, topic);
+    }
+    
+    unlockOrLockTopic(idTopic: number) {
+        const id = idTopic + '';
+        return this.http.post(this.unLockOrLockTopicUrl, {}, { params: { id } });
     }
 }

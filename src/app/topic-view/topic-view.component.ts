@@ -23,6 +23,7 @@ export class TopicViewComponent implements OnInit {
     commentIsTrueData: any;
     isClickOnEdit: boolean = false;
     isHidden: boolean = false;
+    isClickOnComment: boolean = false;
 
     constructor(public activeModal: NgbActiveModal, private tokenStorage: TokenStorageService, private topicService: TopicService) { }
     
@@ -84,5 +85,23 @@ export class TopicViewComponent implements OnInit {
     onClickEditTopic() {
         this.isHidden = !this.isHidden;
         this.isClickOnEdit = !this.isClickOnEdit;
+    }
+
+    onClickEditComment() {
+        this.isClickOnComment = !this.isClickOnComment;
+    }
+
+    onSaveUpdate() {
+        this.isClickOnEdit = !this.isClickOnEdit;
+        this.isHidden = !this.isHidden;
+        return this.topicService.onUpdateTopic(this.topic).subscribe(
+            data => {
+                this.topic = data;
+            }
+        );
+    }
+
+    onCancel() {
+        console.log('clicked btn Cancel')
     }
 }

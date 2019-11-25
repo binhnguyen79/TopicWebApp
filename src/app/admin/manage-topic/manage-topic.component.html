@@ -1,1 +1,25 @@
-<p>manage-topic works!</p>
+<div>
+    <div class="card" style="margin-bottom: 5px;" 
+    *ngFor="let topic of topicData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+        <div class="card-body">
+            <div class="row" style="padding-left: 12px;">
+                <h5 style="width: 90%; height: 100%;" class="card-title">{{topic.title}}</h5>
+                
+                <div style="align-content: center; text-align: center; width: 3%; height: 100%;">
+                   <button class="btn btn-outline-success">
+                        <i class="button lock-topic fas fa-unlock-alt" (click)="lockTopic(topic.idTopic)" ></i>
+                   </button>                   
+                </div>
+            </div>
+            <h6 class="card-subtitle mb-2 text-muted">{{topic.creationDay | date}}</h6>
+            <p class="card-text" style="overflow: hidden; text-overflow: ellipsis;">{{topic.content}}</p>
+            <button  class="btn btn-outline-success my-2 my-sm-0" (click)="openModal(topic)" >Read More</button>
+        </div>
+    </div>
+
+    <ngb-pagination
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [collectionSize]="topicData?.length">
+    </ngb-pagination>
+</div>

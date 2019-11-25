@@ -43,9 +43,6 @@ export class MyTopicComponent implements OnInit {
   }
 
   onSaveTopic() {
-    console.log('button clicked and event fire');
-    console.log(this.title);
-    console.log(this.ck.editorData);
     this.createNewTopic(this.title, this.ck.editorData); 
     window.location.reload();   
   }
@@ -54,9 +51,6 @@ export class MyTopicComponent implements OnInit {
     const topic = new Topic();
     topic.title = title;
     topic.content = content;
-
-    console.log("topic.title = " + topic.title);
-    console.log("topic.title = " + topic.content);
 
     this.topicService.createTopic(title, content, this.tokenStorage.getUsername()).subscribe(
       data => {
