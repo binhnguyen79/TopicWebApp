@@ -24,6 +24,7 @@ export class TopicViewComponent implements OnInit {
     isClickOnEdit: boolean = false;
     isHidden: boolean = false;
     isClickOnComment: boolean = false;
+    isAdmin: boolean = false;
 
     constructor(public activeModal: NgbActiveModal, private tokenStorage: TokenStorageService, private topicService: TopicService) { }
     

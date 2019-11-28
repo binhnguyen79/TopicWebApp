@@ -14,7 +14,7 @@ export class ManageTopicComponent implements OnInit {
 
   page: number = 0;
   pageSize: number = 5;
-  topicData: Topic[];
+  topicData: any;
 
   constructor(private tokenStorage: TokenStorageService, private topicService: TopicService, private modalService: NgbModal) { }
 
@@ -31,10 +31,9 @@ export class ManageTopicComponent implements OnInit {
 
   lockTopic(idTopic: number) {
     console.log("clicked");
-    console.log(idTopic);
     return this.topicService.unlockOrLockTopic(idTopic).subscribe(
       data => {
-        console.log(data);
+        window.alert("Topic " + idTopic + " state: " + data.state);
       }
     );
     // window.location.reload();
@@ -46,6 +45,6 @@ export class ManageTopicComponent implements OnInit {
   }
 
   onGetMyTopic() {
-    return this.topicService.getTopic();
+    return this.topicService.getTopicForAdmin(this.tokenStorage.getUsername());
   }
 }

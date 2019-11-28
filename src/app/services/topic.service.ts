@@ -20,6 +20,7 @@ export class TopicService {
     private getListIsTrueComment = this.baseUrl + '/get-list-is-true-comment';
     private onSaveUpdateTopic = this.baseUrl + '/update-topic';
     private unLockOrLockTopicUrl = this.baseUrl + '/unlock-or-lock-topic';
+    private getTopicForAdminUrl = this.baseUrl + '/get-topic-for-admin';
 
     constructor(private http: HttpClient) { }
 
@@ -58,8 +59,12 @@ export class TopicService {
         return this.http.put(this.onSaveUpdateTopic, topic);
     }
     
-    unlockOrLockTopic(idTopic: number) {
+    unlockOrLockTopic(idTopic: number): Observable<Topic> {
         const id = idTopic + '';
-        return this.http.post(this.unLockOrLockTopicUrl, {}, { params: { id } });
+        return this.http.post<Topic>(this.unLockOrLockTopicUrl, {}, { params: { id } });
+    }
+
+    getTopicForAdmin(username: string) {
+        return this.http.get(this.getTopicForAdminUrl, { params: { username } });
     }
 }

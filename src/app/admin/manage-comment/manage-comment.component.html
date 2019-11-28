@@ -1,1 +1,29 @@
-<p>manage-comment works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Content</th>
+    <th scope="col">Creation Day</th>
+    <th scope="col">Created By</th>
+    <th scope="col">State</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let c of commentData">
+    <th scope="row">{{ c.id_comment }}</th>
+    <td>{{ c.content }}</td>
+    <td>{{ c.creation_day | date }}</td>
+    <td>{{ c.created_by | number }}</td>
+    <td>{{ c.state }}</td>
+    <td>
+        <button type="button" (click)="clickActivateComment(c.id_comment)" class="btn btn-primary" style="margin-left:10px">
+            <i style="position: relative;" class="fas fa-power-off"></i>
+        </button>
+        <button type="button" (click)="clickActivateComment(c.id_comment)" class="btn btn-danger" style="margin-left:10px">
+            <i style="position: relative;" class="fas fa-trash"></i>
+        </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
