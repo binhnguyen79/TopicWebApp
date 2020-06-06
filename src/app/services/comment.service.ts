@@ -12,6 +12,7 @@ export class CommentService {
 
   private getCommentForAdminUrl = this.baseUrl + '/get-comment-for-admin';
   private activateCommentUrl = this.baseUrl + '/unlock-or-lock-comment';
+  private deleteCommentUrl = this.baseUrl + '/delete-comment';
 
   constructor(private http: HttpClient) { }
 
@@ -22,5 +23,10 @@ export class CommentService {
   activateComment(id_comment: number): Observable<any> {
     const id = id_comment + '';
     return this.http.put<any>(this.activateCommentUrl, {}, { params: { id } });
+  }
+
+  deleteComment(id_comment: number): Observable<any> {
+    const id = id_comment + '';
+    return this.http.delete<any>(this.deleteCommentUrl, { params: { id } });
   }
 }

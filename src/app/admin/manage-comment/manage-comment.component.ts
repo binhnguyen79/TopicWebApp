@@ -33,4 +33,13 @@ export class ManageCommentComponent implements OnInit {
       }
     )
   }
+
+  clickDeleteComment(id: number) {
+    this.commentService.deleteComment(id).subscribe(
+      data => {
+        console.log(data);
+        window.location.reload();
+      }
+    )
+  }
 }
